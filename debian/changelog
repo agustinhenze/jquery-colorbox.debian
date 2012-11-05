@@ -1,0 +1,5 @@
+jquery-colorbox (1.3.20-1) unstable; urgency=low
+
+  * Initial release. (Closes: #692359)
+
+ -- Agustin Henze <tin@sluc.org.ar>  Mon, 05 Nov 2012 07:28:17 -0300

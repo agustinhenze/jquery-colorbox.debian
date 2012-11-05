@@ -1,0 +1,23 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+# Uncomment this to turn on verbose mode.
+#export DH_VERBOSE=1
+
+%:
+	dh $@
+
+override_dh_auto_install:
+	mkdir -p debian/libjs-jquery-colorbox/usr/share/javascript/jquery-colorbox
+
+	yui-compressor \
+		colorbox/jquery.colorbox.js \
+		-o \
+		debian/libjs-jquery-colorbox/usr/share/javascript/jquery-colorbox/jquery.colorbox-min.js
+
+	dh_install \
+		colorbox/jquery.colorbox.js \
+		usr/share/javascript/jquery-colorbox/
+
+override_dh_installchangelogs:
+	dh_installchangelogs README.md
