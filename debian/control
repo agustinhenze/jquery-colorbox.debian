@@ -5,13 +5,15 @@ Maintainer: Agustin Henze <tin@sluc.org.ar>
 Build-Depends: debhelper (>= 9)
 Build-Depends-Indep: yui-compressor
 Standards-Version: 3.9.4
+Homepage: http://www.jacklmoore.com/colorbox
+Vcs-Git: git://anonscm.debian.org/collab-maint/jquery-colorbox.git
+Vcs-Browser: http://anonscm.debian.org/gitweb/?p=collab-maint/jquery-colorbox.git
 
 
 Package: libjs-jquery-colorbox
 Architecture: all
 Depends: ${misc:Depends}, libjs-jquery
 Recommends: javascript-common
-Homepage: http://www.jacklmoore.com/colorbox
 Description: jQuery customizable lightbox
  A lightweight customizable lightbox plugin for jQuery. It supports photos,
  photo groups, slideshow, Ajax, inline, and Iframed content.
