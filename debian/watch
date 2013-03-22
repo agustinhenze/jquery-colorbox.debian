@@ -1,0 +1,3 @@
+version=3
+
+https://github.com/jackmoore/colorbox/tags .*archive\/([0-9.]*).tar.gz
