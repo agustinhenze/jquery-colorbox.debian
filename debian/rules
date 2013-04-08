@@ -15,5 +15,15 @@ override_dh_auto_install:
 		-o \
 		debian/libjs-jquery-colorbox/usr/share/javascript/jquery-colorbox/jquery.colorbox-min.js
 
+override_dh_installexamples:
+	dh_installexamples
+
+	find debian/libjs-jquery-colorbox/usr/share/doc/libjs-jquery-colorbox/examples \
+		-name "*.html" \
+		-type f \
+		-exec sed \
+		-i 's@script src=".*jquery.min.js"@script src="/usr/share/javascript/jquery/jquery.min.js"@g;s@script src="../jquery.colorbox.js"@script src="/usr/share/javascript/jquery-colorbox/jquery.colorbox.js"@g' \
+		'{}' \;
+
 override_dh_installchangelogs:
 	dh_installchangelogs README.md
