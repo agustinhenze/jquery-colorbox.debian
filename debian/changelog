@@ -1,3 +1,14 @@
+jquery-colorbox (1.4.10-1) unstable; urgency=low
+
+  * Imported Upstream version 1.4.10
+  * Added internationalization files
+  * debian/rules:
+    - Deleted dh_install command, now is handled by
+      debian/libjs-jquery-colorbox.install file
+  * Added documentation examples
+
+ -- Agustin Henze <tin@sluc.org.ar>  Mon, 08 Apr 2013 18:19:24 -0300
+
 jquery-colorbox (1.4.6-1) unstable; urgency=low
 
   * Imported Upstream version 1.4.6
