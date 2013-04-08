@@ -15,9 +15,5 @@ override_dh_auto_install:
 		-o \
 		debian/libjs-jquery-colorbox/usr/share/javascript/jquery-colorbox/jquery.colorbox-min.js
 
-	dh_install \
-		jquery.colorbox.js \
-		usr/share/javascript/jquery-colorbox/
-
 override_dh_installchangelogs:
 	dh_installchangelogs README.md
