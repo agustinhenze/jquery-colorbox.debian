@@ -8,11 +8,9 @@
 	dh $@
 
 override_dh_auto_install:
-	mkdir -p debian/libjs-jquery-colorbox/usr/share/javascript/jquery-colorbox
-
-	yui-compressor \
+	slimit -m \
 		jquery.colorbox.js \
-		-o \
+		> \
 		debian/libjs-jquery-colorbox/usr/share/javascript/jquery-colorbox/jquery.colorbox-min.js
 
 override_dh_installexamples:
