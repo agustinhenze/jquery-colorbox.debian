@@ -1,5 +1,5 @@
 /*!
-	jQuery Colorbox v1.4.10 - 2013-04-02
+	jQuery Colorbox v1.4.17 - 2013-05-23
 	(c) 2013 Jack Moore - jacklmoore.com/colorbox
 	license: http://www.opensource.org/licenses/mit-license.php
 */
@@ -10,6 +10,7 @@
 	defaults = {
 		transition: "elastic",
 		speed: 300,
+		fadeOut: 300,
 		width: false,
 		initialWidth: "600",
 		innerWidth: false,
@@ -31,7 +32,7 @@
 		opacity: 0.9,
 		preloading: true,
 		className: false,
-		
+
 		// alternate image paths for high-res displays
 		retinaImage: false,
 		retinaUrl: false,
@@ -47,6 +48,7 @@
 
 		open: false,
 		returnFocus: true,
+		trapFocus: true,
 		reposition: true,
 		loop: true,
 		slideshow: false,
@@ -54,7 +56,7 @@
 		slideshowSpeed: 2500,
 		slideshowStart: "start slideshow",
 		slideshowStop: "stop slideshow",
-		photoRegex: /\.(gif|png|jp(e|g|eg)|bmp|ico)((#|\?).*)?$/i,
+		photoRegex: /\.(gif|png|jp(e|g|eg)|bmp|ico|webp)((#|\?).*)?$/i,
 
 		onOpen: false,
 		onLoad: false,
@@ -131,7 +133,7 @@
 	// HELPER FUNCTIONS
 	// ****************
 	
-	// Convience function for creating new jQuery objects
+	// Convenience function for creating new jQuery objects
 	function $tag(tag, id, css) {
 		var element = document.createElement(tag);
 
@@ -365,15 +367,18 @@
 
 				$box.focus();
 				
-				// Confine focus to the modal
-				// Uses event capturing that is not supported in IE8-
-				if (document.addEventListener) {
 
-					document.addEventListener('focus', trapFocus, true);
-					
-					$events.one(event_closed, function () {
-						document.removeEventListener('focus', trapFocus, true);
-					});
+				if (settings.trapFocus) {
+					// Confine focus to the modal
+					// Uses event capturing that is not supported in IE8-
+					if (document.addEventListener) {
+
+						document.addEventListener('focus', trapFocus, true);
+						
+						$events.one(event_closed, function () {
+							document.removeEventListener('focus', trapFocus, true);
+						});
+					}
 				}
 
 				// Return focus on closing
@@ -406,11 +411,11 @@
 			$content = $tag(div, "Content").append(
 				$title = $tag(div, "Title"),
 				$current = $tag(div, "Current"),
-				$prev = $tag('button', "Previous"),
-				$next = $tag('button', "Next"),
+				$prev = $('<button type="button"/>').attr({id:prefix+'Previous'}),
+				$next = $('<button type="button"/>').attr({id:prefix+'Next'}),
 				$slideshow = $tag('button', "Slideshow"),
 				$loadingOverlay,
-				$close = $tag('button', "Close")
+				$close = $('<button type="button"/>').attr({id:prefix+'Close'})
 			);
 			
 			$wrap.append( // The 3x3 Grid that makes up Colorbox
@@ -886,7 +891,9 @@
 
 			href = retinaUrl(settings, href);
 
-			$(photo = new Image())
+			photo = document.createElement('img');
+
+			$(photo)
 			.addClass(prefix + 'Photo')
 			.bind('error',function () {
 				settings.title = false;
@@ -898,6 +905,8 @@
 				if (request !== requests) {
 					return;
 				}
+
+				photo.alt = $(element).attr('alt') || $(element).attr('data-alt') || '';
 
 				if (settings.retinaImage && window.devicePixelRatio > 1) {
 					photo.height = photo.height / window.devicePixelRatio;
@@ -929,6 +938,9 @@
 						publicMethod.next();
 					};
 				}
+
+				photo.style.width = photo.width + 'px';
+				photo.style.height = photo.height + 'px';
 
 				setTimeout(function () { // A pause because Chrome will sometimes report a 0 by 0 size otherwise.
 					prep(photo);
@@ -974,9 +986,9 @@
 			
 			$window.unbind('.' + prefix);
 			
-			$overlay.fadeTo(200, 0);
+			$overlay.fadeTo(settings.fadeOut || 0, 0);
 			
-			$box.stop().fadeTo(300, 0, function () {
+			$box.stop().fadeTo(settings.fadeOut || 0, 0, function () {
 			
 				$box.add($overlay).css({'opacity': 1, cursor: 'auto'}).hide();
 				
