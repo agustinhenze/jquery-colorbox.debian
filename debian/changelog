@@ -1,3 +1,12 @@
+jquery-colorbox (1.4.17-1) unstable; urgency=low
+
+  * Imported Upstream version 1.4.17
+  * Replaced yui-compressor by slimit for minification of the javascript
+    sources.
+  * Used dh_installdirs for directories management.
+
+ -- Agustin Henze <tin@sluc.org.ar>  Wed, 29 May 2013 19:43:14 -0300
+
 jquery-colorbox (1.4.10-1) unstable; urgency=low
 
   * Imported Upstream version 1.4.10
