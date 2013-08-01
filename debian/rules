@@ -3,6 +3,8 @@
 
 # Uncomment this to turn on verbose mode.
 # export DH_VERBOSE=1
+#
+UPSTREAM_VERSION := $(shell dpkg-parsechangelog | sed -n -e's/^Version: \(.*\)-[^-]\+/\1/p')
 
 %:
 	dh $@
@@ -25,3 +27,11 @@ override_dh_installexamples:
 
 override_dh_installchangelogs:
 	dh_installchangelogs README.md
+
+get-orig-source:
+	@if [ ! -d "debian" ] ; then \
+	    echo 'Run this from the top directory of the Debian source' >&2; \
+	    exit 1; \
+	fi
+	wget https://github.com/jackmoore/colorbox/archive/$(UPSTREAM_VERSION).tar.gz \
+		-O ../jquery-colorbox_$(UPSTREAM_VERSION).orig.tar.gz;
