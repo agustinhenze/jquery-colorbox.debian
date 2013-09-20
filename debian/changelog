@@ -1,3 +1,9 @@
+jquery-colorbox (1.4.29-1) unstable; urgency=low
+
+  * Imported Upstream version 1.4.29
+
+ -- Agustin Henze <tin@debian.org>  Fri, 20 Sep 2013 19:40:35 -0300
+
 jquery-colorbox (1.4.27-1) unstable; urgency=low
 
   * Update debian/changelog file
