@@ -1,10 +1,23 @@
 ## About Colorbox:
 A customizable lightbox plugin for jQuery.  See the [project page](http://jacklmoore.com/colorbox/) for documentation and a demonstration, and the [FAQ](http://jacklmoore.com/colorbox/faq/) for solutions and examples to common issues.  Released under the [MIT license](http://www.opensource.org/licenses/mit-license.php).
 
-## Translations Welcome
-Send me your language configuration files.  See /i18n/jquery.colorbox-de.js as an example.
-
 ## Changelog:
+
+### Version 1.4.33 - 2013/10/31
+
+* Fixed an issue where private events propagated to the document in versions of jQuery prior to 1.7.  Fixes #525, Fixes #526
+
+### Version 1.4.32 - 2013/10/16
+
+* Updated stylesheets to avoid issue with using `div {max-width:100%}` (Fixes #520)
+
+### Version 1.4.31 - 2013/9/25
+
+* Used setAttribute to set londesc, so that the value is accessible via DOM Node longDesc property #508
+
+### Version 1.4.30 - 2013/9/24
+
+* Added longdesc and aria-describedby attributes to photos.  Fixes #508
 
 ### Version 1.4.29 - 2013/9/10
 
