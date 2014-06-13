@@ -2,6 +2,7 @@ Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: Colorbox
 Upstream-Contact: Jack Moore <hello@jacklmoore.com>
 Source: http://www.jacklmoore.com/colorbox/
+Files-Excluded: *min.js
 
 Copyright: (c) 2013 Jack Moore - jacklmoore.com
 Files: *
