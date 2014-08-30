@@ -1,3 +1,9 @@
+jquery-colorbox (1.5.13-1) unstable; urgency=medium
+
+  * Imported Upstream version 1.5.13
+
+ -- Agustin Henze <tin@debian.org>  Sat, 30 Aug 2014 16:02:41 -0700
+
 jquery-colorbox (1.5.9-1) unstable; urgency=medium
 
   * Add pattern *.min.js in Files-Excluded at debian/copyright
